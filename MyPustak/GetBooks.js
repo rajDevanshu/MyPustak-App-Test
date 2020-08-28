@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import {connect} from "react-redux";
 
 class getBooks extends Component {
     render(){
@@ -14,4 +15,11 @@ class getBooks extends Component {
     }
 }
 
-export default getBooks;
+const mapStateToProps = (state) => {
+    return{
+        FictionData: state.MReducer.FictionData
+    }
+  }
+  
+  export default connect(mapStateToProps,null)(getBooks)
+

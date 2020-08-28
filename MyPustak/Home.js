@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Dimensions,Alert } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Button, Right, List, Container, Content } from 'native-base';
-import Slidess from './Mslide';
+//import Slidess from './Mslide';
 import Category from '../components/categoryImage';
 import Categorys from '../components/dummycat';
-import { Fiction } from './config/books';
-import { competitive } from './config/books';
-import { school } from './config/books';
+import {Fiction } from '../Redux/actions/MIndex';
+//import { competitive } from './config/books';
+//import { school } from './config/books';
+import {connect} from "react-redux"
 
 const {height, width} = Dimensions.get('window');
 
@@ -19,34 +20,15 @@ class Homes extends Component {
         this.state = {
             isLoading: true,
             data: null,
-            isLoadings: true,
-            datas: null,
-            isLoadingss: true,
-            datass: null
+            
         }
     }
 
     componentDidMount() {
-        Fiction().then(data=> {
+        this.props.Fiction().then(data=> {
             this.setState({
                  isLoading: false,
                  data: data
-            });
-            }, error => {
-                Alert.alert('Error', 'Something went wrong');
-        }),
-        competitive().then(datas=> {
-            this.setState({
-                 isLoadings: false,
-                 datas: datas
-            });
-            }, error => {
-                Alert.alert('Error', 'Something went wrong');
-        }),
-        school().then(datass=> {
-            this.setState({
-                 isLoadingss: false,
-                 datass: datass
             });
             }, error => {
                 Alert.alert('Error', 'Something went wrong');
@@ -108,10 +90,6 @@ class Homes extends Component {
      
             
              </View>
-                
-             <View style={{margin: 20, height: 300}}>
-          <Slidess />
-      </View>
      
 
                 <View>
@@ -125,13 +103,7 @@ class Homes extends Component {
                                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                                         <Container>
                                                 <Content>
-                                                <List
-                                                    dataArray={this.state.datas}
-                                                    renderRow={(item) => {
-                                                        return <Categorys data={item}/>
-                                                    }}
-                                                    horizontal={true}
-                                                        />
+                                    <View><Text>DATA HERE FROM API</Text></View>
                                                 </Content>
                                         </Container> 
                                         </ScrollView>
@@ -183,13 +155,7 @@ class Homes extends Component {
                         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                         <Container>
                             <Content>
-                                <List
-                                dataArray={this.state.datass}
-                                renderRow={(item) => {
-                                   return <Categorys data={item}/>
-                                }}
-                                horizontal={true}
-                                 />
+                                <View><Text>DATA HERE FROM API</Text></View>
                             </Content>
                          </Container> 
                         </ScrollView>
@@ -311,4 +277,17 @@ const styles = StyleSheet.create({
         marginTop: -100
     }
 })
-export default Homes;
+
+const mapDispatchToProps = () => 
+    {
+        return{
+         FictionBooks:() => dispatch(Fiction())           
+        }
+    }
+
+    export default connect(
+        null,
+          mapDispatchToProps
+      )(Homes); 
+
+

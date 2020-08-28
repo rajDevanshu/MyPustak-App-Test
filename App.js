@@ -3,13 +3,13 @@ import React from 'react';
 import { PersistGate } from 'redux-persist/es/integration/react'
 import { Provider } from 'react-redux';
 
-import AppNavigator from "./Redux/Screen/Navigation/Navigation";
+import Navigator from "./MRoutes/drawer";
 
 // Imports: Screens
 
 
 // Imports: Redux Persist Persister
-import { store, persistor } from './Redux/store/store';
+import { store, persistor } from './Redux/store/Mstore';
 
 
 // React Native: App
@@ -21,7 +21,7 @@ export default App = () => {
         loading={null}
         persistor={persistor}
       >
-        <AppNavigator/>
+        <Navigator/>
         
       </PersistGate>
     </Provider>
