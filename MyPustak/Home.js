@@ -5,7 +5,7 @@ import { Button, Right, List, Container, Content } from 'native-base';
 //import Slidess from './Mslide';
 import Category from '../components/categoryImage';
 import Categorys from '../components/dummycat';
-import {Fiction } from '../Redux/actions/MIndex';
+import  { Fiction } from '../Redux/actions/MIndex';
 //import { competitive } from './config/books';
 //import { school } from './config/books';
 import {connect} from "react-redux"
@@ -16,7 +16,7 @@ class Homes extends Component {
 
     constructor(props) {
         super(props);
-
+            
         this.state = {
             isLoading: true,
             data: null,
@@ -25,6 +25,7 @@ class Homes extends Component {
     }
 
     componentDidMount() {
+      
         this.props.Fiction().then(data=> {
             this.setState({
                  isLoading: false,
@@ -278,7 +279,7 @@ const styles = StyleSheet.create({
     }
 })
 
-const mapDispatchToProps = () => 
+const mapDispatchToProps = (dispatch) => 
     {
         return{
          FictionBooks:() => dispatch(Fiction())           
@@ -287,7 +288,7 @@ const mapDispatchToProps = () =>
 
     export default connect(
         null,
-          mapDispatchToProps
+          {Fiction}
       )(Homes); 
 
 

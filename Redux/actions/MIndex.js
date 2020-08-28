@@ -1,25 +1,21 @@
 import axios from 'axios';
 
+export const Fiction = () => (dispatch) => {
 
-export function Fiction() {
+    return (dispatch) => {
+        let new_Url="https://data.mypustak.com/api/v1/get/category/fiction-non-fiction/non-fiction/1/";
 
-    return (dispatch) => { 
-            
-        return new Promise((resolve,reject)=>{
-            axios.get('https://data.mypustak.com/api/v1/get/category/fiction-non-fiction/non-fiction/1/').then(resp => {
-               console.log(resp.data);
-               dispatch(FictionData( resolve(resp.data)));
-            }).catch(err=>{
-                reject(err)
-            })
-        })  
-    }
-}
+        axios.get(new_Url).then((res) => {
+            console.log(res.data);
 
-export const FictionData = (FictionData) => ({
-    
-    type: "FICTION_DATA",
+            dispatch({
+                type: 'FICTION_DATA',
+                
+                payLoad: {
+                    res: res.data
+                },
+            });
+        }).catch((err) => console.log(err));
+    };
 
-    FictionData: FictionData
-});
-
+};

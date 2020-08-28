@@ -1,7 +1,7 @@
 import { createAppContainer } from "react-navigation";
 import {createStackNavigator} from 'react-navigation-stack';
 
-import EmployeeDetails from "../EmployeeDetail"
+import EmployeeDetails from "../Home"
 import ShowEmployeeDetail from "../ShowEmployeeDetail";
 
 

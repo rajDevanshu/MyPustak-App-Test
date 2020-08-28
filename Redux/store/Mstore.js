@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 import { persistStore, persistReducer } from 'redux-persist';
 import rootReducer from '../reducer/MReducerIndex';
+import thunk from 'redux-thunk';
 // Middleware: Redux Persist Config
 
         const persistConfig = {
@@ -17,7 +18,8 @@ import rootReducer from '../reducer/MReducerIndex';
         
         const store = createStore(
             persistedReducer,
-            applyMiddleware(createLogger(),
+            undefined,
+            applyMiddleware(createLogger(), thunk
             ),
             );
         
