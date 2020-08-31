@@ -279,12 +279,12 @@ const styles = StyleSheet.create({
     }
 })
 
-const mapDispatchToProps = (dispatch) => 
+/*const mapDispatchToProps = (Fiction()) =>
     {
         return{
          FictionBooks:() => dispatch(Fiction())           
         }
-    }
+    }*/
 
     export default connect(
         null,

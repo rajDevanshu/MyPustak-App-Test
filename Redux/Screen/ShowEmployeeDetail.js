@@ -1,6 +1,6 @@
 import React from "react";
 import {View, Text,SafeAreaView,StyleSheet} from "react-native";
-import {connect} from "react-redux";
+//import {connect} from "react-redux";
 
 class ShowEmployeeDetail extends React.Component{
 
@@ -11,17 +11,17 @@ render()
 <Text style={styles.mainTextStyle}>Show Employee Details </Text>
 <View style={styles.textViewStyle}>
   <Text style={styles.textStyle}>Name:   </Text>
-  <Text style={styles.textStyle}>{this.props.employeeDetails.name}</Text>
+ 
 </View>
 
 <View style={styles.textViewStyle}>
   <Text style={styles.textStyle}>School Name:    </Text>
-  <Text style={styles.textStyle}>{this.props.employeeDetails.schoolName}</Text>
+ 
 </View>
 
 <View style={styles.textViewStyle}>
   <Text style={styles.textStyle}>Company Name:   </Text>
-  <Text style={styles.textStyle}>{this.props.employeeDetails.companyName}</Text>
+  
 </View>
 
 </SafeAreaView>
@@ -68,10 +68,10 @@ const styles = StyleSheet.create({
 
 })
 
-const mapStateToProps = (state) => {
-  return{
-    employeeDetails: state.employeeDetailReducer.employeeDetails
-  }
-}
+//const mapStateToProps = (state) => {
+  //return{
+    //employeeDetails: state.employeeDetailReducer.employeeDetails
+  //}
+//}
 
-export default connect(mapStateToProps,null)(ShowEmployeeDetail)
+export default ShowEmployeeDetail;
